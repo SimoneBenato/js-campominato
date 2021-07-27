@@ -13,15 +13,15 @@ var userNumbers = [];
 var rounds = 84;
 var haiPerso = false;
 
-while (haiPerso = false && userNumbers.length < rounds) {
+while (haiPerso == false && userNumbers.length < rounds) {
     var shot = parseInt(prompt("inserisci un numero da 1 a 100"));
     // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
-    if (isInArray(shot, bombs)) {
+    if (isInArray(bombs, shot)) {
       alert("KA-BOOM");
       haiPerso = true;
     } else {
     // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
-      if (isInArray(shot, userNumbers)) {
+      if (isInArray(userNumbers, shot)) {
         // L’utente non può inserire più volte lo stesso numero.
         alert("numero già inserito")
       } else {
@@ -31,42 +31,26 @@ while (haiPerso = false && userNumbers.length < rounds) {
 }
 
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
-if (haiPerso = true) {
-    alert("Che peccato! Hai totalizato: " + userNumbers.length + " " + "punti")
+if (haiPerso == true) {
+    alert("Che peccato! Hai totalizato: " + userNumbers.length + " " + "punti");
+    console.log("Che peccato! Hai totalizato: " + userNumbers.length + " " + "punti");
 } else {
-    alert("Hai spaccato! E hai totalizato: " + userNumbers.length + " " + "punti")
+    alert("Hai spaccato! E hai totalizato: " + userNumbers.length + " " + "punti");
+    console.log("Hai spaccato! E hai totalizato: " + userNumbers.length + " " + "punti");
 }
 
+function isInArray(array, element) {
+  var i = 0;
+  var result = false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  while(i < array.length && result == false) {
+    if (element == array[i]) {
+      result = true;
+    }
+    i++
+  }
+  return result
+}
 
 
 // BONUS: (da fare solo se funziona tutto il resto)
